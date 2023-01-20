@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/24599f22aa.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div id="header">
+        
+        <div class="container">        
+<nav>  
+    <img src="images/download4.png" class="Logo">
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+<div  class="header-text">
+    <p> Full Stack Java Developer</p>
+    <h1> Hello<br> I'm <span>Krishna prasath</span> </h1>
+</div>
+
+        </div>
+    </div>
+   
+<div id="about">
+<div class="container">
+    <div class="row">
+        <div class="about-col-1">
+        <img src="images/IMGO1.jpg">
+        </div>
+        <div class="about-col-2">
+         <h1 class="sub-title">About Me</h1>
+               <p>To use my interpersonal and professional skills 
+            to achieve goals of an organisation
+             as well as enhance  my knowledge about 
+             new emerging trends in IT sector
+              </p>
+
+             <div class="tab-titles">
+                <p class="tab-links active-link" onclick="opentab('experience')"> Experience</p>
+                <p class="tab-links" onclick="opentab('education')"> Education</p>
+             </div> 
+             <div class="tab-contents active-tab" id="experience">
+                <ul>
+                    <li>
+                        <span> Full Stack Java Developer Trainee </span><br>
+                        
+                        Mphasis
+                    </li>
+                </ul>
+             </div>
+             
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li>
+                            <span> 2018 - 2022 </span><br>
+                            B.E Computer Science & Engineering<br>
+                            Dr.Mahalingam college of Enginnering and Technology,
+                            Coimbatore
+                        </li>
+                    </ul>
+    
+             </div>
+        </div>
+    </div>
+</div>
+</div>  
+
+<!--------contact------------->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i> krishnajr23@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> +91 8667538633</p>
+                <div class="social-icons">
+                    <a href="https://instagram.com/krishna_jr_?igshid=ZmZhODViOGI="><i class="fa-brands fa-square-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/krishna-prasath-6757291a1"><i class="fa-brands fa-linkedin"></i></a><br>
+                    
+                </div>
+                
+                <a href="images/2530059 Krishna Prasath R 1.0.pdf" download class="btn btn1">Download Resume</a>
+            
+           </div>
+
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="E-mail" placeholder="Your Mail" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p> Copyright <i class="fa-solid fa-copyright"></i> Krishna Prasath </p>
+    </div>
+
+
+
+</div>
+
+
+<script>
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+    
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyyP0md2rP7a3g_Yzy4uGnM-4F6ciiorG7VDhoeb3Yv89z1As2MYr0QRkA1_gwStb3c/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent Successfully"
+            setTimeout(function(){
+                msg.innerHTML = " "
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+</body>
+</html>
